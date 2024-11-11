@@ -1,7 +1,14 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TouchableHighlight,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 
-const Productitem = ({ elemento, index, handleDelete }) => {
+const Productitem = ({ elemento, index, handleDelete, handleEdit }) => {
   return (
     <View style={styles.card}>
       <View
@@ -28,12 +35,39 @@ const Productitem = ({ elemento, index, handleDelete }) => {
           </Text>
         </View>
       </View>
-      <View style={{ padding: 10, justifyContent: "center" }}>
-        <Button
-          title="X"
-          color="red"
+      <View
+        style={{
+          padding: 10,
+          justifyContent: "center",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 12,
+        }}
+      >
+        <TouchableOpacity
+          style={{
+            backgroundColor: "blue",
+            flexDirection: "row",
+            justifyContent: "center",
+            padding: 6,
+            borderRadius: 5,
+          }}
+          onPress={() => handleEdit(index)}
+        >
+          <Text style={{ color: "white" }}>E</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "red",
+            flexDirection: "row",
+            justifyContent: "center",
+            padding: 6,
+            borderRadius: 5,
+          }}
           onPress={() => handleDelete(index)}
-        ></Button>
+        >
+          <Text style={{ color: "white" }}>X</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
